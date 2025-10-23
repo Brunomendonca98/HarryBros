@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harry Bros – PressKit</title>
+  <meta name="description" content="PressKit oficial do protótipo Harry Bros – plataforma 2D em Unity." />
+  <meta property="og:title" content="Harry Bros – PressKit" />
+  <meta property="og:description" content="Protótipo em Unity. Sinopse, capturas, identidade visual, equipe e roadmap." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./assets/og-image.jpg" />
+  <meta name="theme-color" content="#1c0f28" />
+  <link rel="icon" href="./assets/favicon.png" />
+  <style>
+    :root{
+      --bg:#0d0b14;            /* fundo escuro mágico */
+      --panel:#171427;         /* painéis */
+      --text:#F3F3F7;          /* texto */
+      --muted:#b9b6c9;         /* texto secundário */
+      --hp:#b11a22;            /* vermelho HP */
+      --mario:#e52521;         /* vermelho Mario */
+      --gold:#f1c40f;          /* dourado */
+      --blue:#1f6feb;          /* azul UI */
+      --success:#2ecc71;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --radius-sm:12px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0d0b14 0%,#0b0a12 100%);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--gold);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:100%;max-width:var(--max);margin:0 auto;padding:24px}
+    header.hero{position:relative;border-radius:var(--radius);overflow:hidden;background:radial-gradient(1200px 500px at 10% -10%,rgba(177,26,34,.25),transparent 60%),
+      radial-gradient(1200px 500px at 110% 10%,rgba(229,37,33,.20),transparent 50%),
+      linear-gradient(180deg,#151226,#0e0c16);
+      box-shadow:var(--shadow);
+      padding:48px 28px}
+    .hero .brand{display:flex;align-items:center;gap:14px}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#2a253e;color:#d9d6e6;font-weight:600;border:1px solid #3a3358}
+    h1{font-size:clamp(28px,4vw,44px);margin:6px 0 8px 0;letter-spacing:.3px}
+    h2{font-size:clamp(20px,2.6vw,28px);margin:28px 0 12px 0}
+    p.lead{color:#ddd;max-width:68ch}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid #3a3358;background:#221d36;color:#fff;font-weight:700;cursor:pointer}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.25)}
+    .btn.primary{background:linear-gradient(180deg,#2b2350,#231d3f);border-color:#4e4377}
+    .btn.gold{background:linear-gradient(180deg,#f1c40f,#caa00d);border-color:#b58900;color:#16120f}
+
+    /* grid sections */
+    section{margin:36px 0}
+    .grid{display:grid;gap:18px}
+    .grid.cols-2{grid-template-columns:1fr}
+    @media (min-width:900px){.grid.cols-2{grid-template-columns:1.2fr .8fr}}
+    .card{background:linear-gradient(180deg,#171427,#120f1f);border:1px solid #2e2745;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+
+    .tag{display:inline-block;margin:4px 6px 0 0;padding:6px 10px;border-radius:999px;background:#241e39;border:1px solid #3a3358;color:#c6c2d8;font-size:13px}
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    @media (min-width:780px){.gallery{grid-template-columns:repeat(4,1fr)}}
+    .gallery img{width:100%;border-radius:14px;border:1px solid #2e2745;display:block}
+    .gallery .ph{aspect-ratio:16/9;background:linear-gradient(135deg,#241e39,#1a152d);border:1px dashed #3a3358;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#a59fc1}
+
+    /* table */
+    table{width:100%;border-collapse:separate;border-spacing:0 10px}
+    th,td{text-align:left;padding:10px 12px}
+    th{color:#cfcbe4;font-weight:700}
+    tr{background:#151227;border:1px solid #2e2745}
+    tr td:first-child, tr th:first-child{border-top-left-radius:10px;border-bottom-left-radius:10px}
+    tr td:last-child, tr th:last-child{border-top-right-radius:10px;border-bottom-right-radius:10px}
+
+    footer{opacity:.8;text-align:center;padding:24px 0;margin-top:44px;color:#a59fc1}
+    hr.sep{border:none;height:1px;background:linear-gradient(90deg,transparent,#332a50,transparent);margin:24px 0}
+    .tiny{font-size:13px;color:#a59fc1}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid #3a3358;border-radius:999px;background:#201a33;color:#dcd9ea}
+    .strong{color:#f5d76e}
+    .logo-circle{width:44px;height:44px;border-radius:999px;background:radial-gradient(circle at 30% 30%,#f7e07a,#d4af37 60%,#9a6a05);box-shadow:inset 0 0 12px rgba(0,0,0,.35),0 4px 18px rgba(0,0,0,.3)}
+    /* anchor nav */
+    nav.top{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+    nav.top a{padding:8px 10px;border:1px solid #3a3358;border-radius:10px;background:#201a33;color:#dcd9ea}
+    nav.top a:hover{background:#2a2343}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="brand">
+        <div class="logo-circle" aria-hidden="true"></div>
+        <div>
+          <span class="badge">Protótipo · Unity 2D</span>
+          <h1>Harry <span class="strong">Bros</span> <span class="tiny">v1.2 · PressKit</span></h1>
+          <p class="lead">Plataforma 2D que funde a magia de <em>Harry Potter</em> com os desafios clássicos de <em>Mario Bros</em>. Este presskit apresenta sinopse, capturas, identidade visual, equipe, especificações técnicas e roadmap.</p>
+          <nav class="top">
+            <a href="#sinopse">Sinopse</a>
+            <a href="#identidade">Identidade</a>
+            <a href="#capturas">Capturas</a>
+            <a href="#features">Funcionalidades</a>
+            <a href="#tecnico">Técnico</a>
+            <a href="#equipe">Equipe</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#contato">Contato</a>
+          </nav>
+          <div class="cta">
+            <!-- Substitua os links abaixo quando tiver build e vídeo -->
+            <a class="btn primary" href="#capturas">Ver Capturas</a>
+            <a class="btn gold" href="#video">Assistir Vídeo do Desenvolvimento</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="sinopse" class="grid cols-2">
+      <div class="card">
+        <h2>Sinopse</h2>
+        <p>Após um feitiço mal executado, <strong>Harry</strong> é lançado ao <strong>Reino do Cogumelo</strong>, levando consigo ecos do poder da <strong>Pedra Filosofal</strong>. Para voltar a Hogwarts e impedir a aliança sombria entre <em>Bowser</em> e <em>Voldemort</em>, ele deve atravessar mundos híbridos, superar puzzles mágicos e enfrentar inimigos clássicos com um toque arcano.</p>
+        <p><span class="pill">Gênero: Plataforma 2D</span> <span class="pill">Público: +10</span> <span class="pill">Estado: Protótipo jogável</span></p>
+      </div>
+      <div class="card">
+        <h2>Destaques</h2>
+        <ul>
+          <li>Voo limitado com a <strong>vassoura Firebolt</strong> (duração + cooldown).</li>
+          <li>Feitiços de ataque e defesa; coleta de <em>moedas</em> e <em>artefatos</em> para upgrades.</li>
+          <li>IA de <strong>dementador</strong>: patrulha, detecção e perseguição temporizada.</li>
+          <li>HUD com vida, moedas, feitiço ativo e indicador de perigo.</li>
+          <li>Mundos híbridos: Floresta Proibida × Floresta do Yoshi, Masmorras × Castelo Bowser/Hogwarts.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="identidade" class="grid cols-2">
+      <div class="card">
+        <h2>Identidade Visual</h2>
+        <p>Estilo <strong>pixel art</strong> com paleta sombria (inspirada em Hogwarts) e acentos vibrantes (herança de Mario). Tipografia simples e legível para interfaces. Ícones minimalistas e feedbacks visuais claros para ações de magia e coleta.</p>
+        <div>
+          <span class="tag">#0d0b14</span>
+          <span class="tag">#171427</span>
+          <span class="tag">#f1c40f</span>
+          <span class="tag">#e52521</span>
+          <span class="tag">#1f6feb</span>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Downloads de Mídia</h2>
+        <p class="tiny">Substitua os links abaixo por arquivos reais no repositório.</p>
+        <ul>
+          <li><a href="./assets/logo.png" download>Logo (PNG)</a></li>
+          <li><a href="./assets/sprites.zip" download>Sprites & Mockups (ZIP)</a></li>
+          <li><a href="./assets/presskit.zip" download>Pacote PressKit (ZIP)</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="capturas">
+      <div class="card">
+        <h2>Capturas de Tela</h2>
+        <p class="tiny">Coloque suas imagens em <code>/assets/capturas/</code>. Use nomes como <code>scene-01.jpg</code>, <code>hud-01.jpg</code>, <code>enemy-01.jpg</code>.</p>
+        <div class="gallery">
+          <!-- Substitua pelos <img src="./assets/capturas/arquivo.jpg" alt="descrição"> -->
+          <div class="ph">760×428 – Gameplay</div>
+          <div class="ph">760×428 – HUD</div>
+          <div class="ph">760×428 – Inimigo</div>
+          <div class="ph">760×428 – Menu</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="grid cols-2">
+      <div class="card">
+        <h2>Funcionalidades</h2>
+        <ul>
+          <li>Movimentação, pulo, corrida e <strong>Firebolt</strong> (voo com limite).</li>
+          <li>Feitiços configuráveis (ScriptableObjects) e defesa temporária.</li>
+          <li>Coleta de moedas e chaves; desbloqueio de portas e fases.</li>
+          <li>Inimigos com estados (Patrulha → Perseguição → Retorno).</li>
+        </ul>
+      </div>
+      <div id="video" class="card">
+        <h2>Vídeo do Desenvolvimento</h2>
+        <p>Incorpore aqui o link do seu vídeo (YouTube/Drive). Exemplo:</p>
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid #2e2745">
+          <!-- Substitua o src abaixo pelo seu link do YouTube -->
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo do Desenvolvimento" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="tecnico" class="grid cols-2">
+      <div class="card">
+        <h2>Especificações Técnicas</h2>
+        <table>
+          <tr><th>Engine</th><td>Unity 2022+ (2D)</td></tr>
+          <tr><th>Linguagem</th><td>C#</td></tr>
+          <tr><th>Plataforma</th><td>Windows (protótipo); WebGL opcional</td></tr>
+          <tr><th>Estado</th><td>Protótipo com uma fase jogável</td></tr>
+          <tr><th>Controle</th><td>Teclado/Joystick (Input System)</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Build / Download</h2>
+        <p>Quando a build estiver pronta, disponibilize aqui:</p>
+        <ul>
+          <li><a href="./build/HarryBros_Windows.zip">Download – Windows (ZIP)</a></li>
+          <li><a href="./build/WebGL/index.html">Versão WebGL</a> (se publicada)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="equipe" class="grid cols-2">
+      <div class="card">
+        <h2>Equipe</h2>
+        <ul>
+          <li><strong>Alexandre Bruno de Mendonça Alves Filho</strong> — Programação & GDD</li>
+          <li>Nome 2 — Arte</li>
+          <li>Nome 3 — Level Design</li>
+          <li>Nome 4 — Áudio</li>
+        </ul>
+        <p class="tiny">Atualize os papéis conforme a composição real do grupo.</p>
+      </div>
+      <div class="card">
+        <h2>Contato</h2>
+        <p id="contato">E-mail: <a href="mailto:contato@harrybros.dev">contato@harrybros.dev</a><br>Repositório: <a href="https://github.com/Brunomendonca98/HarryBros">github.com/Brunomendonca98/HarryBros</a></p>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="card">
+        <h2>Roadmap</h2>
+        <table>
+          <tr><th>Etapa</th><th>Status</th><th>Quando</th></tr>
+          <tr><td>Sistema de movimentação</td><td>Concluído</td><td>Semana 1–2</td></tr>
+          <tr><td>Arte de personagens</td><td>Em progresso</td><td>Semana 3–4</td></tr>
+          <tr><td>Inimigo (Dementador)</td><td>Em progresso</td><td>Semana 5–6</td></tr>
+          <tr><td>HUD e menus</td><td>Planejado</td><td>Semana 7–8</td></tr>
+          <tr><td>Chefes e fase final</td><td>Planejado</td><td>Semana 9–10</td></tr>
+          <tr><td>Testes e build</td><td>Planejado</td><td>Semana 11–12</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <hr class="sep" />
+    <footer>
+      <p>© 2025 Harry Bros · Protótipo Acadêmico · Este é um presskit para fins educacionais.</p>
+    </footer>
+  </div>
+</body>
+</html>
